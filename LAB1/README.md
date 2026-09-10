@@ -9,7 +9,7 @@
 **Contact**: enoc.martinez@upc.edu
 
 <p align="center">
-  <img height="100" src="https://github.com/EnocMartinez/citm-geda-2026/blob/main/resources/banner.png?raw=true" alt="infographic">
+  <img height="100" src="https://github.com/EnocMartinez/citm-geda-2026/blob/main/resources/banner.png?raw=true" alt="banner">
 </p>
 
 ---
