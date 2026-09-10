@@ -10,7 +10,7 @@
 **Contact**: enoc.martinez@upc.edu  
 
 <p align="center">
-  <img height="100" src="resources/banner.png" alt="GeDa infographic">
+  <img height="100" src="resources/banner.png" alt="GeDa">
 </p>
 
 ---
@@ -30,12 +30,12 @@ Across the course you will work with:
 
 ## Laboratory sessions
 
-| Lab | Topic | Depends on |
-|---|---|---|
-| [LAB1](LAB1/) | Python 3 basics — types, flow control, functions, files | T01, T02 |
-| LAB2 | CSV files, pandas and matplotlib | T03 |
-| LAB3 | Automation and APIs using Telegram bots | T04 |
-| LAB4 | Working with Copernicus data — automated download, geographic plots | T05 |
+| Lab | Topic                                                               |
+|---|---------------------------------------------------------------------|
+| [LAB1](LAB1/) | Python 3 basics — types, flow control, functions, files             |
+| LAB2 | CSV files, pandas and matplotlib                                    |
+| LAB3 | Automation and APIs using Telegram bots                             |
+| LAB4 | Working with Copernicus data — automated download, geographic plots |
 
 Open a lab folder, read its `README.md`, and work through the tasks in order. Exercises are designed to be completed in Python 3 — no prior programming experience is assumed.
 
