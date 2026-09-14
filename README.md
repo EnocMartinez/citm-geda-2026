@@ -2,12 +2,12 @@
 
 ---
 
-**Course**: GeDa - Gestió de Dades: Comunicacions, Programació i Simulació  
-**Program**: Ciències i Tecnologies del Mar (CiTM)  
-**University**: Universitat Politècnica de Catalunya (UPC)  
-**Author**: Enoc Martínez  
-**Department**: Departament d'Enginyeria Electrònica (EEL)  
-**Contact**: enoc.martinez@upc.edu  
+**Assignatura**: GeDa - Gestió de Dades: Comunicacions, Programació i Simulació  
+**Titulació**: Ciències i Tecnologies del Mar (CiTM)  
+**Universitat**: Universitat Politècnica de Catalunya (UPC)  
+**Autor**: Enoc Martínez  
+**Departament**: Departament d'Enginyeria Electrònica (EEL)  
+**Contacte**: enoc.martinez@upc.edu  
 
 <p align="center">
   <img height="100" src="resources/banner.png" alt="GeDa">
@@ -15,30 +15,30 @@
 
 ---
 
-## About the course
+## Sobre l'assignatura
 
-GeDa introduces programming and data management applied to the marine domain. The course is divided into **6 theory sessions** (full group) and **4 laboratory sessions** (split group).
+GeDa introdueix la programació i la gestió de dades aplicades a l'àmbit marí. L'assignatura es divideix en **6 sessions de teoria** (grup gran) i **4 sessions de laboratori** (grup partit).
 
-Across the course you will work with:
+Al llarg del curs treballaràs amb:
 
-- **Programming fundamentals** — variables and types, lists and dictionaries, flow control, functions, and reading and writing files, all in Python 3.
-- **Marine data structures** — structured, semi-structured and unstructured data; CSV, JSON and NetCDF.
-- **Data analysis and visualisation** — pandas DataFrames, and building figures that actually communicate something.
-- **APIs and automation** — client–server architecture, HTTP, and scripts that fetch and report data without you.
-- **Repositories and quality control** — Copernicus Marine, EMODnet, ERDDAP, and QARTOD flagging of real time series.
-- **Machine learning** — supervised and unsupervised learning applied to oceanographic data.
+- **Fonaments de programació** — variables i tipus, llistes i diccionaris, control de flux, funcions, i lectura i escriptura de fitxers, tot en Python 3.
+- **Estructures de dades marines** — dades estructurades, semiestructurades i no estructurades; CSV, JSON i NetCDF.
+- **Anàlisi i visualització de dades** — DataFrames de pandas, i figures que comuniquin realment alguna cosa.
+- **APIs i automatització** — arquitectura client–servidor, HTTP, i scripts que descarreguen dades i n'informen sense tu.
+- **Repositoris i control de qualitat** — Copernicus Marine, EMODnet, ERDDAP, i etiquetatge QARTOD de sèries temporals reals.
+- **Aprenentatge automàtic** — aprenentatge supervisat i no supervisat aplicat a dades oceanogràfiques.
 
-## Laboratory sessions
+## Sessions de laboratori
 
-| Lab | Topic                                                               |
-|---|---------------------------------------------------------------------|
-| [LAB1](LAB1/) | Python 3 basics — types, flow control, functions, files             |
-| LAB2 | CSV files, pandas and matplotlib                                    |
-| LAB3 | Automation and APIs using Telegram bots                             |
-| LAB4 | Working with Copernicus data — automated download, geographic plots |
+| Pràctica | Tema                                                                     |
+|---|--------------------------------------------------------------------------|
+| [LAB1](LAB1/) | Fonaments de Python 3 — tipus, control de flux, funcions, fitxers        |
+| LAB2 | Fitxers CSV, pandas i matplotlib                                         |
+| LAB3 | Automatització i APIs amb bots de Telegram                               |
+| LAB4 | Treballar amb dades de Copernicus — descàrrega automàtica, mapes         |
 
-Open a lab folder, read its `README.md`, and work through the tasks in order. Exercises are designed to be completed in Python 3 — no prior programming experience is assumed.
+Obre la carpeta d'una pràctica, llegeix-ne el `README.md` i fes les tasques en ordre. Els exercicis estan pensats per resoldre's en Python 3 — no cal experiència prèvia en programació.
 
-## License
+## Llicència
 
-Released under the MIT License. See [LICENSE](LICENSE).
+Publicat sota la llicència MIT. Vegeu [LICENSE](LICENSE).

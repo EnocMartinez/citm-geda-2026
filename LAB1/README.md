@@ -1,12 +1,12 @@
-# GeDa Lab 1 — Variables, Lists, Functions & Files
+# GeDa Pràctica 1 — Variables, llistes, funcions i fitxers
 
 ---
 
-**Course**: GeDa - Gestió de Dades: Comunicacions, Programació i Simulació  
-**Program**: Ciències i Tecnologies del Mar  
-**Author**: Enoc Martínez  
-**Department**: Departament d'Enginyeria Electrònica (EEL)  
-**Contact**: enoc.martinez@upc.edu
+**Assignatura**: GeDa - Gestió de Dades: Comunicacions, Programació i Simulació  
+**Titulació**: Ciències i Tecnologies del Mar  
+**Autor**: Enoc Martínez  
+**Departament**: Departament d'Enginyeria Electrònica (EEL)  
+**Contacte**: enoc.martinez@upc.edu
 
 <p align="center">
   <img height="100" src="https://github.com/EnocMartinez/citm-geda-2026/blob/main/resources/banner.png?raw=true" alt="banner">
@@ -14,81 +14,81 @@
 
 ---
 
-## Introduction
+## Introducció
 
-Welcome to your first hands-on session in GeDa. By the end of this lab you will have written a program that reads a real CTD profile from a file, computes the speed of sound at every depth, saves the result, and plots it — and you will be able to point at the **SOFAR channel** in your own figure.
+Benvingut a la teva primera sessió pràctica de GeDa. En acabar aquesta pràctica hauràs escrit un programa que llegeix un perfil CTD real d'un fitxer, calcula la velocitat del so a cada profunditat, desa el resultat i el representa gràficament — i podràs assenyalar el **canal SOFAR** a la teva pròpia figura.
 
-We build it one piece at a time. Each task adds exactly one new idea, and each one exists because the previous task made you want it.
+Ho construirem peça a peça. Cada tasca afegeix exactament una idea nova, i cadascuna existeix perquè la tasca anterior te n'ha fet venir ganes.
 
-Where you see `____`, that is a blank for you to fill in. 📝 marks a question to answer in your report.
+Allà on vegis `____`, hi ha un espai en blanc que has d'omplir. El símbol 📝 marca una pregunta que has de respondre a l'informe.
 
-### Objectives
+### Objectius
 
-* Variables, basic types and arithmetic in Python 3
-* Lists, `for` loops and `if` conditionals
-* Writing and reusing your own functions
-* Reading and writing text files
-* Understanding why the speed of sound in the ocean is not constant
+* Variables, tipus bàsics i aritmètica en Python 3
+* Llistes, bucles `for` i condicionals `if`
+* Escriure i reutilitzar les teves pròpies funcions
+* Llegir i escriure fitxers de text
+* Entendre per què la velocitat del so a l'oceà no és constant
 
-### What to hand in
+### Què cal lliurar
 
-Deliver to Atenea the following files:
+Lliura a l'Atenea els fitxers següents:
 
-* A report in PDF format with snapshots of your code explaining every task.
-* In some tasks there are questions, marked with 📝, that need to be answered in your report.
-* The report must include an `AI usage` section describing which tools you used and why.
-* The final Python script containing all the tasks in a single file named `LAB1.py`.
+* Un informe en format PDF amb captures del teu codi explicant cada tasca.
+* En algunes tasques hi ha preguntes, marcades amb 📝, que cal respondre a l'informe.
+* L'informe ha d'incloure una secció `Ús d'IA` que descrigui quines eines has fet servir i per què.
+* L'script final de Python amb totes les tasques en un únic fitxer anomenat `LAB1.py`.
 
-### Getting the files
+### Com obtenir els fitxers
 
-You need `ctd_profile.csv` from this folder. Either clone the whole repository:
+Necessites `ctd_profile.csv` d'aquesta carpeta. Pots clonar tot el repositori:
 
 ```bash
 git clone https://github.com/EnocMartinez/citm-geda-2026.git
 cd citm-geda-2026/LAB1
 ```
 
-or download the single file from the GitHub web page (open it, then click **Download raw file**).
+o descarregar només aquest fitxer des de la pàgina web de GitHub (obre'l i clica **Download raw file**).
 
-> ⚠️ Keep `LAB1.py` and `ctd_profile.csv` **in the same folder**, otherwise Python will not find the data file.
+> ⚠️ Mantén `LAB1.py` i `ctd_profile.csv` **a la mateixa carpeta**, o Python no trobarà el fitxer de dades.
 
 ---
 
-## Setup — before the first task
+## Preparació — abans de la primera tasca
 
-### 1. Install Python 3 and an IDE
+### 1. Instal·la Python 3 i un IDE
 
-You need two separate things, and it is worth understanding the difference:
+Necessites dues coses diferents, i val la pena entendre'n la diferència:
 
-* **Python 3** is the *interpreter* — the program that actually runs your code.
-* **An IDE** is the *editor* — where you write your code comfortably. It does not run anything by itself; it asks Python to do it.
+* **Python 3** és l'*intèrpret* — el programa que realment executa el teu codi.
+* **Un IDE** és l'*editor* — on escrius el codi còmodament. No executa res per si mateix; li demana a Python que ho faci.
 
-Install Python 3 from [python.org](https://www.python.org/downloads/) (tick **"Add Python to PATH"** on Windows), and then either [PyCharm Community](https://www.jetbrains.com/pycharm/download/) or [Visual Studio Code](https://code.visualstudio.com/).
+Instal·la Python 3 des de [python.org](https://www.python.org/downloads/) (marca **"Add Python to PATH"** a Windows) i després [PyCharm Community](https://www.jetbrains.com/pycharm/download/) o [Visual Studio Code](https://code.visualstudio.com/).
 
-### 2. Your first script
+### 2. El teu primer script
 
-Create a file called `hello_world.py` containing one line:
+Crea un fitxer anomenat `hello_world.py` amb una sola línia:
 
 ```python
-print("Hello, ocean!")
+print("Hola, oceà!")
 ```
 
-### 3. Run it two different ways
+### 3. Executa'l de dues maneres diferents
 
-**From the IDE:** press the green ▶ Run button.
+**Des de l'IDE:** prem el botó verd ▶ Run.
 
-**From the terminal:** open a terminal, navigate to the folder, and type:
+**Des del terminal:** obre un terminal, ves fins a la carpeta i escriu:
 
 ```bash
 python3 hello_world.py       # macOS / Linux
 python hello_world.py        # Windows
 ```
 
-> 📝 You should get exactly the same output both times. Explain in your report why that is — what is the IDE actually doing when you press ▶?
+> 📝 Hauries d'obtenir exactament la mateixa sortida en tots dos casos. Explica a l'informe per què — què fa realment l'IDE quan prems ▶?
 
-### 4. Install matplotlib
+### 4. Instal·la matplotlib
 
-You will need it in the last task:
+El necessitaràs a l'última tasca:
 
 ```bash
 pip3 install matplotlib      # macOS / Linux
@@ -97,20 +97,20 @@ pip install matplotlib       # Windows
 
 ---
 
-## Before you start: five programming ideas you will use today
+## Abans de començar: cinc idees de programació que faràs servir avui
 
-### Variables and types
+### Variables i tipus
 
-A variable is a name that stores a value so you can reuse it without retyping it — a labelled box.
+Una variable és un nom que guarda un valor perquè el puguis reutilitzar sense tornar-lo a escriure — una capsa etiquetada.
 
 ```python
-depth = 25.4          # float   -> a number with decimals
-n_samples = 12        # int     -> a whole number
-station = "OBSEA"     # str     -> text, always in quotes
-is_valid = True       # bool    -> True or False
+depth = 25.4          # float   -> un número amb decimals
+n_samples = 12        # int     -> un número enter
+station = "OBSEA"     # str     -> text, sempre entre cometes
+is_valid = True       # bool    -> True o False
 ```
 
-Python works out the type by itself. You can ask it:
+Python dedueix el tipus tot sol. Li ho pots preguntar:
 
 ```python
 print(type(depth))        # <class 'float'>
@@ -118,105 +118,105 @@ print(type(n_samples))    # <class 'int'>
 print(type(station))      # <class 'str'>
 ```
 
-Types matter, because Python refuses to mix them:
+Els tipus importen, perquè Python es nega a barrejar-los:
 
 ```python
-print(n_samples + depth)      # 37.4   -> fine, both are numbers
-print(station + " station")   # OBSEA station  -> fine, both are text
-print(station + n_samples)    # TypeError!     -> text plus number makes no sense
+print(n_samples + depth)      # 37.4   -> correcte, tots dos són números
+print(station + " és una estació")   # OBSEA és una estació  -> correcte, tots dos són text
+print(station + n_samples)    # TypeError!     -> text més número no té sentit
 ```
 
-To mix them on purpose, convert first:
+Per barrejar-los expressament, cal convertir primer:
 
 ```python
-print(station + " has " + str(n_samples) + " samples")   # str() turns a number into text
-print(float("25.4") + 1)                                 # float() turns text into a number -> 26.4
+print(station + " té " + str(n_samples) + " mostres")   # str() converteix un número en text
+print(float("25.4") + 1)                                # float() converteix text en número -> 26.4
 ```
 
-### Lists
+### Llistes
 
-Most of the time we do not have one value but a whole sequence — one measurement per depth, for example. A **list** stores an ordered sequence, written with square brackets:
+La majoria de vegades no tenim un sol valor sinó tota una seqüència — una mesura per cada profunditat, per exemple. Una **llista** guarda una seqüència ordenada, i s'escriu amb claudàtors:
 
 ```python
 temperatures = [24.1, 20.4, 15.6, 12.1]
 
-print(temperatures[0])     # first element  -> 24.1   (Python counts from 0!)
-print(temperatures[1])     # second element -> 20.4
-print(temperatures[-1])    # last element   -> 12.1
-print(len(temperatures))   # how many       -> 4
+print(temperatures[0])     # primer element  -> 24.1   (Python compta des de 0!)
+print(temperatures[1])     # segon element   -> 20.4
+print(temperatures[-1])    # últim element   -> 12.1
+print(len(temperatures))   # quants n'hi ha  -> 4
 ```
 
-Lists start empty and grow with `append`:
+Les llistes comencen buides i creixen amb `append`:
 
 ```python
-speeds = []                # an empty list
-speeds.append(1533.8)      # add one value at the end
+speeds = []                # una llista buida
+speeds.append(1533.8)      # afegeix un valor al final
 speeds.append(1525.2)
 print(speeds)              # [1533.8, 1525.2]
 ```
 
-### `for` loops
+### Bucles `for`
 
-A `for` loop repeats the same block of code once per element in a list. Note the colon and the indentation — Python uses indentation instead of brackets, and it is not optional.
+Un bucle `for` repeteix el mateix bloc de codi un cop per cada element d'una llista. Fixa't en els dos punts i en la indentació — Python fa servir la indentació en comptes de claus, i no és opcional.
 
 ```python
 temperatures = [24.1, 20.4, 15.6]
 
 for t in temperatures:
-    print("Temperature:", t)
+    print("Temperatura:", t)
 ```
 
 ```
-Temperature: 24.1
-Temperature: 20.4
-Temperature: 15.6
+Temperatura: 24.1
+Temperatura: 20.4
+Temperatura: 15.6
 ```
 
-Very often you need the *position* as well as the value, so you can look up the same index in a second list. `range(len(...))` gives you 0, 1, 2, ...:
+Molt sovint necessites la *posició* a més del valor, per poder consultar el mateix índex en una segona llista. `range(len(...))` et dona 0, 1, 2, ...:
 
 ```python
 depths       = [0, 50, 100]
 temperatures = [24.1, 20.4, 15.6]
 
 for i in range(len(depths)):
-    print("At", depths[i], "m the temperature is", temperatures[i], "C")
+    print("A", depths[i], "m la temperatura és", temperatures[i], "C")
 ```
 
 ```
-At 0 m the temperature is 24.1 C
-At 50 m the temperature is 20.4 C
-At 100 m the temperature is 15.6 C
+A 0 m la temperatura és 24.1 C
+A 50 m la temperatura és 20.4 C
+A 100 m la temperatura és 15.6 C
 ```
 
-### `if` conditionals
+### Condicionals `if`
 
-An `if` runs a block only when a condition is true:
+Un `if` executa un bloc només quan una condició és certa:
 
 ```python
 temperature = 1.8
 
 if temperature < 2:
-    print("Warning: this is very cold water")
+    print("Avís: aquesta aigua és molt freda")
 elif temperature > 30:
-    print("Warning: this is suspiciously warm")
+    print("Avís: aquesta aigua és sospitosament càlida")
 else:
-    print("Temperature looks normal")
+    print("La temperatura sembla normal")
 ```
 
 ```
-Warning: this is very cold water
+Avís: aquesta aigua és molt freda
 ```
 
-Conditions can be combined with `or` and `and`:
+Les condicions es poden combinar amb `or` i `and`:
 
 ```python
 if temperature < 2 or temperature > 30:
-    print("Outside the valid range")
+    print("Fora de l'interval vàlid")
 ```
 
-### Functions
+### Funcions
 
-A function is a named, reusable recipe: you give it inputs, it does some work, and hands back a result with `return`. Write the calculation once, use it as many times as you like.
+Una funció és una recepta reutilitzable amb nom: li dones unes entrades, fa una feina i retorna un resultat amb `return`. Escrius el càlcul un sol cop i el fas servir tantes vegades com vulguis.
 
 ```python
 def add_five(x):
@@ -226,7 +226,7 @@ print(add_five(10))    # -> 15
 print(add_five(2.5))   # -> 7.5
 ```
 
-As many arguments as you need:
+Amb tants arguments com necessitis:
 
 ```python
 def rectangle_area(width, height):
@@ -236,116 +236,116 @@ print(rectangle_area(3, 4))     # -> 12
 print(rectangle_area(10, 2.5))  # -> 25.0
 ```
 
-### Reading and writing files
+### Llegir i escriure fitxers
 
-To read a text file, open it and loop over its lines. `with` guarantees the file is closed again even if something goes wrong:
+Per llegir un fitxer de text, obre'l i recorre les seves línies amb un bucle. `with` garanteix que el fitxer es tanca encara que alguna cosa falli:
 
 ```python
-with open("ctd_profile.csv", "r") as f:      # "r" = read
+with open("ctd_profile.csv", "r") as f:      # "r" = read (llegir)
     for line in f:
         print(line)
 ```
 
-Each `line` arrives as **text**, including the invisible newline character at the end. Two tools clean it up:
+Cada `line` arriba com a **text**, incloent-hi el caràcter de salt de línia invisible del final. Dues eines ho netegen:
 
 ```python
 line = "0,24.10,36.52\n"
 
-clean = line.strip()          # removes the newline -> "0,24.10,36.52"
-parts = clean.split(",")      # splits on commas    -> ['0', '24.10', '36.52']
+clean = line.strip()          # elimina el salt de línia -> "0,24.10,36.52"
+parts = clean.split(",")      # separa per les comes     -> ['0', '24.10', '36.52']
 
-print(parts[0])               # '0'      <- still text!
-print(float(parts[0]))        # 0.0      <- now a number
+print(parts[0])               # '0'      <- encara és text!
+print(float(parts[0]))        # 0.0      <- ara és un número
 ```
 
-Writing works the same way, with `"w"` instead of `"r"`. `\n` is the newline character — without it everything ends up on one line:
+Escriure funciona igual, però amb `"w"` en comptes de `"r"`. `\n` és el caràcter de salt de línia — sense ell tot acaba en una sola línia:
 
 ```python
-with open("results.csv", "w") as f:          # "w" = write (overwrites the file!)
+with open("results.csv", "w") as f:          # "w" = write (escriure, sobreescriu el fitxer!)
     f.write("depth_m,sound_speed_ms\n")
     f.write("0,1533.78\n")
 ```
 
 ---
 
-## The science bit: why the speed of sound is not constant
+## La part científica: per què la velocitat del so no és constant
 
-In air, sound travels at roughly 340 m/s. In seawater it is about **1500 m/s** — but not exactly, and that "not exactly" is what makes underwater acoustics interesting.
+A l'aire, el so viatja a uns 340 m/s. A l'aigua de mar és d'uns **1500 m/s** — però no exactament, i aquest "no exactament" és el que fa interessant l'acústica submarina.
 
-The speed of sound in seawater increases with all three of:
+La velocitat del so a l'aigua de mar augmenta amb totes tres:
 
-| Property | Effect |
+| Propietat | Efecte |
 |---|---|
-| **Temperature** | strongest effect near the surface — warm water is faster |
-| **Salinity** | weakest effect — saltier water is slightly faster |
-| **Pressure (depth)** | dominant in the deep ocean — deeper water is faster |
+| **Temperatura** | l'efecte més fort a prop de la superfície — l'aigua càlida és més ràpida |
+| **Salinitat** | l'efecte més feble — l'aigua més salada és lleugerament més ràpida |
+| **Pressió (profunditat)** | dominant a l'oceà profund — l'aigua més fonda és més ràpida |
 
-These pull in opposite directions as you descend. Temperature drops fast through the thermocline, slowing sound down; but pressure keeps rising, speeding it up. Somewhere in between there is a **minimum**, and sound that enters that layer gets refracted back into it and trapped. That waveguide is the **SOFAR channel**, and it is why a whale call can travel thousands of kilometres.
+Aquests efectes tiben en direccions oposades a mesura que baixes. La temperatura cau ràpidament a través de la termoclina i frena el so; però la pressió no para de créixer i l'accelera. En algun punt intermedi hi ha un **mínim**, i el so que entra en aquesta capa hi queda refractat i atrapat. Aquesta guia d'ones és el **canal SOFAR**, i és per això que el cant d'una balena pot recórrer milers de quilòmetres.
 
-You are going to find it in real data today.
+Avui el trobaràs en dades reals.
 
-### The Mackenzie equation
+### L'equació de Mackenzie
 
-Mackenzie (1981) fitted a nine-term polynomial to measurements:
+Mackenzie (1981) va ajustar un polinomi de nou termes a mesures experimentals:
 
 **c = 1448.96 + 4.591·T − 5.304×10⁻²·T² + 2.374×10⁻⁴·T³ + 1.340·(S−35) + 1.630×10⁻²·D + 1.675×10⁻⁷·D² − 1.025×10⁻²·T·(S−35) − 7.139×10⁻¹³·T·D³**
 
-where **T** is temperature in °C, **S** is salinity in PSU, **D** is depth in metres, and **c** comes out in m/s.
+on **T** és la temperatura en °C, **S** és la salinitat en PSU, **D** és la profunditat en metres, i **c** en surt en m/s.
 
-It is only valid for **2 ≤ T ≤ 30 °C**, **25 ≤ S ≤ 40 PSU** and **0 ≤ D ≤ 8000 m**. Remember that — it matters in Task 5.
+Només és vàlida per a **2 ≤ T ≤ 30 °C**, **25 ≤ S ≤ 40 PSU** i **0 ≤ D ≤ 8000 m**. Recorda-ho — és important a la Tasca 5.
 
-In Python, `10⁻²` is written `1e-2`, and `T²` is written `t**2`.
-
----
-
-# Lab Assignment
-
-**Goal:** by the end you will have one script (`LAB1.py`) that reads `ctd_profile.csv`, computes the speed of sound at every depth, writes the result to a new file, and plots the profile.
+En Python, `10⁻²` s'escriu `1e-2`, i `T²` s'escriu `t**2`.
 
 ---
 
-## Task 1 — Hello, ocean
+# Enunciat de la pràctica
 
-**Goal:** get comfortable with variables, types and `print()` before any oceanography enters the picture.  
-**Report**: add a snapshot of the code and its output.
+**Objectiu:** en acabar tindràs un únic script (`LAB1.py`) que llegeix `ctd_profile.csv`, calcula la velocitat del so a cada profunditat, escriu el resultat en un fitxer nou i representa el perfil.
+
+---
+
+## Tasca 1 — Hola, oceà
+
+**Objectiu:** agafar confiança amb variables, tipus i `print()` abans que hi entri gens d'oceanografia.  
+**Informe**: afegeix una captura del codi i de la seva sortida.
 
 ```python
-name = "____"                       # TODO: put your name (or your pair's names) here
-print("Hello, my name is:", name)
+name = "____"                       # TODO: posa-hi el teu nom (o el de la teva parella)
+print("Hola, em dic:", name)
 
-temperature = 24.1                  # degrees Celsius
+temperature = 24.1                  # graus Celsius
 salinity = 36.5                     # PSU
 depth = 0                           # metres
 
-print("Temperature:", temperature, "C")
-print("Salinity:", salinity, "PSU")
-print("Depth:", depth, "m")
+print("Temperatura:", temperature, "C")
+print("Salinitat:", salinity, "PSU")
+print("Profunditat:", depth, "m")
 
-print("Type of temperature:", ____(temperature))   # TODO: which function reports the type?
-print("Type of depth:", ____(depth))               # TODO: same here
+print("Tipus de temperature:", ____(temperature))   # TODO: quina funció informa del tipus?
+print("Tipus de depth:", ____(depth))               # TODO: aquí igual
 ```
 
-> 📝 `temperature` and `depth` are both numbers, but Python reports two different types for them. Which two, and what is the difference?
+> 📝 `temperature` i `depth` són tots dos números, però Python n'informa de dos tipus diferents. Quins són, i quina diferència hi ha?
 
-Now try this line, and then **delete it** once you have seen what happens:
+Ara prova aquesta línia i després **esborra-la**, un cop hagis vist què passa:
 
 ```python
-print("Depth is " + depth)     # this crashes on purpose
+print("La profunditat és " + depth)     # això peta expressament
 ```
 
-> 📝 Copy the error message into your report. What is Python complaining about, and what would you change to make it work?
+> 📝 Copia el missatge d'error a l'informe. De què es queixa Python, i què canviaries perquè funcionés?
 
 ---
 
-## Task 2 — The speed of sound, the hard way
+## Tasca 2 — La velocitat del so, per les braves
 
-**Goal:** compute the speed of sound in three different water masses.  
-**Report**: add a snapshot of the code and the three results.
+**Objectiu:** calcular la velocitat del so en tres masses d'aigua diferents.  
+**Informe**: afegeix una captura del codi i dels tres resultats.
 
-Here is the Mackenzie equation for the first water mass. Fill in the two blanks:
+Aquí tens l'equació de Mackenzie per a la primera massa d'aigua. Omple els dos espais en blanc:
 
 ```python
-# 1. Surface Mediterranean water in summer
+# 1. Aigua mediterrània superficial a l'estiu
 t = 24.1
 s = 36.5
 d = 0
@@ -353,59 +353,59 @@ d = 0
 c = (1448.96
      + 4.591 * t
      - 5.304e-2 * t**2
-     + 2.374e-4 * ____            # TODO: this term needs T cubed
+     + 2.374e-4 * ____            # TODO: aquest terme necessita T al cub
      + 1.340 * (s - 35)
      + 1.630e-2 * d
      + 1.675e-7 * d**2
      - 1.025e-2 * t * (s - 35)
-     - 7.139e-13 * t * ____)      # TODO: this term needs D cubed
+     - 7.139e-13 * t * ____)      # TODO: aquest terme necessita D al cub
 
-print("Surface Mediterranean:", round(c, 2), "m/s")
+print("Mediterrània superficial:", round(c, 2), "m/s")
 ```
 
-Expected output:
+Sortida esperada:
 
 ```
-Surface Mediterranean: 1533.76 m/s
+Mediterrània superficial: 1533.76 m/s
 ```
 
-Now do the same for two more water masses. **Copy and paste** the whole block twice and change only the three input values:
+Ara fes el mateix per a dues masses d'aigua més. **Copia i enganxa** tot el bloc dues vegades i canvia només els tres valors d'entrada:
 
 ```python
-# 2. Levantine Intermediate Water
+# 2. Aigua Intermèdia Llevantina
 t = 13.5
 s = 38.7
 d = 400
 
-# 3. Deep Atlantic water
+# 3. Aigua atlàntica profunda
 t = 2.5
 s = 34.9
 d = 3000
 ```
 
-You should get:
+Hauries d'obtenir:
 
 ```
-Levantine Intermediate: 1512.85 m/s
-Deep Atlantic:          1510.34 m/s
+Intermèdia Llevantina:  1512.85 m/s
+Atlàntica profunda:     1510.34 m/s
 ```
 
-> 📝 Levantine Intermediate Water is **11 °C warmer** than the deep Atlantic water, yet the two sound speeds are almost identical. Explain why, using the table of effects above.
+> 📝 L'Aigua Intermèdia Llevantina és **11 °C més càlida** que l'aigua atlàntica profunda, i tot i així les dues velocitats del so són gairebé idèntiques. Explica per què, fent servir la taula d'efectes de més amunt.
 
-> 📝 You have now written the same nine-term formula three times. Suppose you found a typo in one term. How many places would you have to fix it, and how confident are you that you would catch all of them?
+> 📝 Acabes d'escriure la mateixa fórmula de nou termes tres vegades. Imagina't que hi trobes una errata en un dels termes. En quants llocs l'hauries de corregir, i com n'estàs de segur que els detectaries tots?
 
 ---
 
-## Task 3 — Write the function
+## Tasca 3 — Escriu la funció
 
-**Goal:** write the formula **once**, and never again.  
-**Report**: add a snapshot of the code and the self-check output.
+**Objectiu:** escriure la fórmula **una sola vegada**, i mai més.  
+**Informe**: afegeix una captura del codi i de la sortida de la comprovació.
 
-That last question is the whole point of functions. Wrap the formula up, give it a name, and let it take the three values as arguments:
+Aquesta última pregunta és tot el sentit de les funcions. Empaqueta la fórmula, dona-li un nom i deixa que rebi els tres valors com a arguments:
 
 ```python
 def sound_speed(t, s, d):
-    """Speed of sound in seawater (Mackenzie 1981), in m/s."""
+    """Velocitat del so a l'aigua de mar (Mackenzie 1981), en m/s."""
     c = (1448.96
          + 4.591 * t
          - 5.304e-2 * t**2
@@ -415,33 +415,33 @@ def sound_speed(t, s, d):
          + 1.675e-7 * d**2
          - 1.025e-2 * t * (s - 35)
          - 7.139e-13 * t * d**3)
-    return ____                    # TODO: what should the function hand back?
+    return ____                    # TODO: què hauria de retornar la funció?
 ```
 
-Check it reproduces Task 2, in three lines instead of thirty:
+Comprova que reprodueix la Tasca 2, en tres línies en comptes de trenta:
 
 ```python
 print(round(sound_speed(24.1, 36.5, 0), 2))       # -> 1533.76
 print(round(sound_speed(13.5, 38.7, 400), 2))     # -> 1512.85
-print(round(sound_speed(____, ____, ____), 2))    # TODO: the deep Atlantic values -> 1510.34
+print(round(sound_speed(____, ____, ____), 2))    # TODO: els valors de l'atlàntica profunda -> 1510.34
 ```
 
-**Self-check.** The value everyone uses to verify a Mackenzie implementation is T = 25 °C, S = 35 PSU, D = 1000 m:
+**Autocomprovació.** El valor que tothom fa servir per verificar una implementació de Mackenzie és T = 25 °C, S = 35 PSU, D = 1000 m:
 
 ```python
-print(round(sound_speed(25, 35, 1000), 3))    # must print exactly 1550.744
+print(round(sound_speed(25, 35, 1000), 3))    # ha d'imprimir exactament 1550.744
 ```
 
-> ⚠️ If you do not get `1550.744`, you have a typo in the formula. Fix it now — every remaining task depends on this function being right.
+> ⚠️ Si no obtens `1550.744`, tens una errata a la fórmula. Corregeix-la ara — totes les tasques restants depenen que aquesta funció sigui correcta.
 
 ---
 
-## Task 4 — Read the CTD profile from a file
+## Tasca 4 — Llegeix el perfil CTD d'un fitxer
 
-**Goal:** load 25 real depth / temperature / salinity records into three lists.  
-**Report**: add a snapshot of the code and the printed summary.
+**Objectiu:** carregar 25 registres reals de profunditat / temperatura / salinitat en tres llistes.  
+**Informe**: afegeix una captura del codi i del resum que s'imprimeix.
 
-`ctd_profile.csv` is a real-shaped CTD cast from the open ocean. Its first three lines look like this:
+`ctd_profile.csv` és un perfil CTD d'oceà obert amb forma realista. Les seves tres primeres línies són així:
 
 ```
 depth_m,temperature_c,salinity_psu
@@ -449,7 +449,7 @@ depth_m,temperature_c,salinity_psu
 10,24.05,36.52
 ```
 
-The first line is a **header** — it names the columns, it is not data, and we must skip it. `f.readline()` reads exactly one line and moves on, which is precisely what we need:
+La primera línia és una **capçalera** — dona nom a les columnes, no són dades, i l'hem d'ometre. `f.readline()` llegeix exactament una línia i avança, que és justament el que necessitem:
 
 ```python
 depths = []
@@ -457,42 +457,42 @@ temperatures = []
 salinities = []
 
 with open("ctd_profile.csv", "r") as f:
-    header = f.readline()               # read the header line and set it aside
-    for line in f:                      # the loop now starts at the first data line
-        parts = line.strip().split(____)      # TODO: which character separates the columns?
+    header = f.readline()               # llegeix la línia de capçalera i deixa-la de banda
+    for line in f:                      # ara el bucle comença a la primera línia de dades
+        parts = line.strip().split(____)      # TODO: quin caràcter separa les columnes?
         depths.append(float(parts[0]))
-        temperatures.append(float(parts[____]))    # TODO: which column is temperature?
-        salinities.append(float(parts[____]))      # TODO: which column is salinity?
+        temperatures.append(float(parts[____]))    # TODO: quina columna és la temperatura?
+        salinities.append(float(parts[____]))      # TODO: quina columna és la salinitat?
 ```
 
-Check what you loaded:
+Comprova què has carregat:
 
 ```python
-print("Header was:", header.strip())
-print("Number of records:", ____(depths))       # TODO: how many items are in a list?
-print("Shallowest:", depths[0], "m ->", temperatures[0], "C,", salinities[0], "PSU")
-print("Deepest:", depths[____], "m ->", temperatures[____], "C,", salinities[____], "PSU")
+print("La capçalera era:", header.strip())
+print("Nombre de registres:", ____(depths))       # TODO: com se saben els elements d'una llista?
+print("Menys profund:", depths[0], "m ->", temperatures[0], "C,", salinities[0], "PSU")
+print("Més profund:", depths[____], "m ->", temperatures[____], "C,", salinities[____], "PSU")
 ```
 
-Expected output:
+Sortida esperada:
 
 ```
-Header was: depth_m,temperature_c,salinity_psu
-Number of records: 25
-Shallowest: 0.0 m -> 24.1 C, 36.52 PSU
-Deepest: 4000.0 m -> 1.8 C, 34.92 PSU
+La capçalera era: depth_m,temperature_c,salinity_psu
+Nombre de registres: 25
+Menys profund: 0.0 m -> 24.1 C, 36.52 PSU
+Més profund: 4000.0 m -> 1.8 C, 34.92 PSU
 ```
 
-> 📝 Why do we need `float()` here? What would `depths[0] + depths[1]` produce if we left the values as text? Try it and report what happens.
+> 📝 Per què necessitem `float()` aquí? Què donaria `depths[0] + depths[1]` si deixéssim els valors com a text? Prova-ho i explica què passa.
 
 ---
 
-## Task 5 — Compute the whole profile, and check your inputs
+## Tasca 5 — Calcula tot el perfil i valida les entrades
 
-**Goal:** call your function once per depth, and refuse to trust values outside the equation's valid range.  
-**Report**: add a snapshot of the code and the warnings it prints.
+**Objectiu:** cridar la teva funció un cop per cada profunditat, i no refiar-te de valors fora de l'interval de validesa de l'equació.  
+**Informe**: afegeix una captura del codi i dels avisos que imprimeix.
 
-You have a function and three lists. Now put them together. Because we need to read the same position `i` from all three lists at once, we loop over `range(len(depths))`:
+Ja tens una funció i tres llistes. Ara ajunta-ho tot. Com que hem de llegir la mateixa posició `i` de les tres llistes alhora, iterem sobre `range(len(depths))`:
 
 ```python
 speeds = []
@@ -504,47 +504,47 @@ for i in range(len(depths)):
 
     speeds.append(sound_speed(t, s, d))
 
-print("Computed", len(speeds), "sound speeds")
-print("At the surface:", round(speeds[0], 2), "m/s")
+print("Calculades", len(speeds), "velocitats del so")
+print("A la superfície:", round(speeds[0], 2), "m/s")
 ```
 
-Now add the validation. Remember Mackenzie is only valid for 2 ≤ T ≤ 30 °C. Insert this **inside the loop**, just before the `append`:
+Ara afegeix-hi la validació. Recorda que Mackenzie només és vàlida per a 2 ≤ T ≤ 30 °C. Insereix això **dins del bucle**, just abans de l'`append`:
 
 ```python
-    if t < ____ or t > ____:            # TODO: the valid temperature range
-        print("WARNING: temperature", t, "C at", d, "m is outside the valid range (2-30 C)")
+    if t < ____ or t > ____:            # TODO: l'interval vàlid de temperatura
+        print("AVÍS: la temperatura", t, "C a", d, "m és fora de l'interval vàlid (2-30 C)")
 ```
 
-Expected output:
+Sortida esperada:
 
 ```
-WARNING: temperature 1.95 C at 3500.0 m is outside the valid range (2-30 C)
-WARNING: temperature 1.8 C at 4000.0 m is outside the valid range (2-30 C)
-Computed 25 sound speeds
-At the surface: 1533.78 m/s
+AVÍS: la temperatura 1.95 C a 3500.0 m és fora de l'interval vàlid (2-30 C)
+AVÍS: la temperatura 1.8 C a 4000.0 m és fora de l'interval vàlid (2-30 C)
+Calculades 25 velocitats del so
+A la superfície: 1533.78 m/s
 ```
 
-> 📝 Two records triggered the warning. Are these measurement errors, or is this real water? Look up the typical temperature of Antarctic Bottom Water before you answer.
+> 📝 Dos registres han activat l'avís. Són errors de mesura, o és aigua real? Busca la temperatura típica de l'Aigua de Fons Antàrtica abans de respondre.
 
-> 📝 We printed a warning but still computed a value for those two depths. Was that the right decision? What else could we have done, and what would we lose in each case?
+> 📝 Hem imprès un avís però igualment hem calculat un valor per a aquestes dues profunditats. Va ser la decisió correcta? Què més hauríem pogut fer, i què perdríem en cada cas?
 
 ---
 
-## Task 6 — Save your results, then read them back
+## Tasca 6 — Desa els resultats i torna'ls a llegir
 
-**Goal:** write a new CSV file, and prove it worked by loading it again.  
-**Report**: add a snapshot of the code and the first few lines of your output file.
+**Objectiu:** escriure un fitxer CSV nou, i demostrar que ha funcionat tornant-lo a carregar.  
+**Informe**: afegeix una captura del codi i de les primeres línies del fitxer de sortida.
 
-Computing something is useless if it disappears when the script ends. Write the results out:
+Calcular una cosa no serveix de res si desapareix quan acaba l'script. Escriu els resultats:
 
 ```python
-with open("sound_speed_profile.csv", "____") as f:      # TODO: "r" to read, "w" to write?
+with open("sound_speed_profile.csv", "____") as f:      # TODO: "r" per llegir, "w" per escriure?
     f.write("depth_m,sound_speed_ms\n")
     for i in range(len(depths)):
-        f.write(str(depths[i]) + "," + str(round(speeds[i], 2)) + "____")   # TODO: end the line
+        f.write(str(depths[i]) + "," + str(round(speeds[i], 2)) + "____")   # TODO: acaba la línia
 ```
 
-Open `sound_speed_profile.csv` in your IDE. It should start like this:
+Obre `sound_speed_profile.csv` al teu IDE. Hauria de començar així:
 
 ```
 depth_m,sound_speed_ms
@@ -553,41 +553,41 @@ depth_m,sound_speed_ms
 20.0,1533.63
 ```
 
-and end like this:
+i acabar així:
 
 ```
 4000.0,1524.75
 ```
 
-Now read it back — never trust a file you have not re-opened:
+Ara torna'l a llegir — no et refiïs mai d'un fitxer que no has tornat a obrir:
 
 ```python
 check_depths = []
 check_speeds = []
 
 with open("sound_speed_profile.csv", "r") as f:
-    f.readline()                        # skip the header
+    f.readline()                        # omet la capçalera
     for line in f:
         parts = line.strip().split(",")
         check_depths.append(float(parts[0]))
         check_speeds.append(float(parts[1]))
 
-print("Read back", len(check_speeds), "values")
-print("First value matches:", round(check_speeds[0], 2) == round(speeds[0], 2))
+print("Rellegits", len(check_speeds), "valors")
+print("El primer valor coincideix:", round(check_speeds[0], 2) == round(speeds[0], 2))
 ```
 
-> 📝 What happens if you run the script twice? Does the file grow, or stay the same size? Explain what `"w"` does to a file that already exists.
+> 📝 Què passa si executes l'script dues vegades? El fitxer creix, o es queda igual de gran? Explica què fa `"w"` amb un fitxer que ja existeix.
 
 ---
 
-## Task 7 — Plot the profile and find the SOFAR channel
+## Tasca 7 — Representa el perfil i troba el canal SOFAR
 
-**Goal:** see the physics in your own data.  
-**Report**: include the figure and answer the questions.
+**Objectiu:** veure la física a les teves pròpies dades.  
+**Informe**: inclou la figura i respon les preguntes.
 
-We will not explain how plotting works today — that is T03. Just copy this in and run it.
+Avui no explicarem com funcionen els gràfics — això és el T03. Simplement copia això i executa-ho.
 
-Two conventions worth noticing: oceanographers put **depth on the vertical axis**, and they **flip it** so that deep is down, the way the ocean actually is.
+Dues convencions que val la pena notar: els oceanògrafs posen la **profunditat a l'eix vertical**, i el **giren** perquè el fons quedi a sota, tal com és l'oceà de debò.
 
 ```python
 import matplotlib.pyplot as plt
@@ -595,73 +595,71 @@ import matplotlib.pyplot as plt
 fig, ax = plt.subplots(figsize=(5, 7))
 
 ax.plot(speeds, depths, marker="o")
-ax.invert_yaxis()                       # deep at the bottom, like the real ocean
-ax.set_xlabel("sound speed (m/s)")
-ax.set_ylabel("depth (m)")
-ax.set_title("Sound speed profile")
+ax.invert_yaxis()                       # el fons a baix, com a l'oceà real
+ax.set_xlabel("velocitat del so (m/s)")
+ax.set_ylabel("profunditat (m)")
+ax.set_title("Perfil de velocitat del so")
 ax.grid(True)
 
 plt.show()
 ```
 
-Now find the minimum. Python has a built-in for this, and `.index()` tells you *where* a value sits in a list:
+Ara troba el mínim. Python té una funció integrada per fer-ho, i `.index()` et diu *on* es troba un valor dins d'una llista:
 
 ```python
 c_min = min(speeds)
 i_min = speeds.index(c_min)
 
-print("Minimum sound speed:", round(c_min, 2), "m/s")
-print("Found at depth:", depths[i_min], "m")
+print("Velocitat del so mínima:", round(c_min, 2), "m/s")
+print("Trobada a la profunditat:", depths[i_min], "m")
 ```
 
-Expected output:
+Sortida esperada:
 
 ```
-Minimum sound speed: 1490.46 m/s
-Found at depth: 1200.0 m
+Velocitat del so mínima: 1490.46 m/s
+Trobada a la profunditat: 1200.0 m
 ```
 
-> 📝 Include your figure in the report and mark the SOFAR axis on it. At what depth is it?
+> 📝 Inclou la figura a l'informe i marca-hi l'eix del canal SOFAR. A quina profunditat es troba?
 
-> 📝 The sound speed at the surface is 1533.78 m/s and at 4000 m it is 1524.75 m/s — nearly the same value. But the profile in between is very far from a straight line. Explain the shape in terms of the three competing effects.
-
-> 📝 A whale calls from 1200 m depth. Why does its call travel further than the same call made at 50 m?
+> 📝 La velocitat del so a la superfície és 1533.78 m/s i a 4000 m és 1524.75 m/s — pràcticament el mateix valor. Però el perfil entremig no s'assembla gens a una línia recta. Explica'n la forma en termes dels tres efectes que competeixen.
 
 ### Bonus
 
-Plot temperature and salinity next to the sound speed, and see which one drives the shape:
+Representa la temperatura i la salinitat al costat de la velocitat del so, i mira quina de les dues en governa la forma:
 
 ```python
 fig, axes = plt.subplots(1, 3, figsize=(12, 6), sharey=True)
 
 axes[0].plot(temperatures, depths, color="red")
-axes[0].set_xlabel("temperature (C)")
-axes[0].set_ylabel("depth (m)")
+axes[0].set_xlabel("temperatura (C)")
+axes[0].set_ylabel("profunditat (m)")
 
 axes[1].plot(salinities, depths, color="green")
-axes[1].set_xlabel("salinity (PSU)")
+axes[1].set_xlabel("salinitat (PSU)")
 
 axes[2].plot(speeds, depths, color="blue")
-axes[2].set_xlabel("sound speed (m/s)")
+axes[2].set_xlabel("velocitat del so (m/s)")
 
 axes[0].invert_yaxis()
 plt.show()
 ```
 
-> 📝 Above 1000 m, which of the two — temperature or salinity — explains the sound speed curve? Below 2000 m, neither of them does. What is driving it there?
+> 📝 Per sobre dels 1000 m, quina de les dues — temperatura o salinitat — explica la corba de velocitat del so? Per sota dels 2000 m, cap de les dues ho fa. Què la governa allà?
 
 ---
 
-## Wrap-up
+## Resum
 
-Today you learned how to:
+Avui has après a:
 
-- store values in **variables**, and why Python cares about their **type**
-- keep sequences of values in **lists**, and walk through them with **`for`** loops
-- make decisions with **`if`**, and use it to validate data before trusting it
-- write a **function** once and reuse it, instead of copy-pasting a formula nine terms long
-- **read** a real data file, split each line into columns, and convert text into numbers
-- **write** your results back out to a new file, and verify them by reading them again
-- turn a table of numbers into a figure that shows the **SOFAR channel**
+- guardar valors en **variables**, i per què a Python li importa el seu **tipus**
+- mantenir seqüències de valors en **llistes**, i recórrer-les amb bucles **`for`**
+- prendre decisions amb **`if`**, i fer-lo servir per validar dades abans de refiar-te'n
+- escriure una **funció** un sol cop i reutilitzar-la, en comptes de copiar i enganxar una fórmula de nou termes
+- **llegir** un fitxer de dades real, separar cada línia en columnes i convertir text en números
+- **escriure** els teus resultats en un fitxer nou, i verificar-los tornant-los a llegir
+- convertir una taula de números en una figura que mostra el **canal SOFAR**
 
-The script you just wrote is a complete, if small, piece of oceanographic software: it ingests data, validates it, processes it, stores the result and visualises it. Every lab from here on is a variation on those same five steps.
+L'script que acabes d'escriure és una peça de programari oceanogràfic completa, encara que petita: ingesta dades, les valida, les processa, desa el resultat i el visualitza. Totes les pràctiques d'ara endavant són una variació d'aquests mateixos cinc passos.
