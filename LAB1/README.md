@@ -71,30 +71,6 @@ Crea un fitxer anomenat `hello_world.py` amb una sola línia:
 print("Hola, oceà!")
 ```
 
-### 3. Executa'l de dues maneres diferents
-
-**Des de l'IDE:** prem el botó verd ▶ Run.
-
-**Des del terminal:** obre un terminal, ves fins a la carpeta i escriu:
-
-```bash
-python3 hello_world.py       # macOS / Linux
-python hello_world.py        # Windows
-```
-
-> 📝 Hauries d'obtenir exactament la mateixa sortida en tots dos casos. Explica a l'informe per què — què fa realment l'IDE quan prems ▶?
-
-### 4. Instal·la matplotlib
-
-El necessitaràs a l'última tasca:
-
-```bash
-pip3 install matplotlib      # macOS / Linux
-pip install matplotlib       # Windows
-```
-
----
-
 ## Abans de començar: cinc idees de programació que faràs servir avui
 
 ### Variables i tipus
@@ -510,7 +486,7 @@ Ara afegeix-hi la validació. Recorda que Mackenzie només és vàlida per a 2 �
 
 ```python
     if t < ____ or t > ____:            #  l'interval vàlid de temperatura
-        print("AVÍS: la temperatura", t, "C a", d, "m és fora de l'interval vàlid (2-30 C)")
+        print("AVÍS: la temperatura", t, "C a", d, "m és fora de l'interval vàlid!")
 ```
 
 Sortida esperada:
