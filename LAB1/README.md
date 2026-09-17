@@ -18,8 +18,6 @@
 
 Benvingut a la teva primera sessió pràctica de GeDa. En acabar aquesta pràctica hauràs escrit un programa que llegeix un perfil CTD real d'un fitxer, calcula la velocitat del so a cada profunditat, desa el resultat i el representa gràficament — i podràs assenyalar el **canal SOFAR** a la teva pròpia figura.
 
-Ho construirem peça a peça. Cada tasca afegeix exactament una idea nova, i cadascuna existeix perquè la tasca anterior te n'ha fet venir ganes.
-
 Allà on vegis `____`, hi ha un espai en blanc que has d'omplir. El símbol 📝 marca una pregunta que has de respondre a l'informe.
 
 ### Objectius
@@ -310,7 +308,7 @@ En Python, `10⁻²` s'escriu `1e-2`, i `T²` s'escriu `t**2`.
 **Informe**: afegeix una captura del codi i de la seva sortida.
 
 ```python
-name = "____"                       # TODO: posa-hi el teu nom (o el de la teva parella)
+name = "____"                       #  posa-hi el teu nom (o el de la teva parella)
 print("Hola, em dic:", name)
 
 temperature = 24.1                  # graus Celsius
@@ -321,8 +319,8 @@ print("Temperatura:", temperature, "C")
 print("Salinitat:", salinity, "PSU")
 print("Profunditat:", depth, "m")
 
-print("Tipus de temperature:", ____(temperature))   # TODO: quina funció informa del tipus?
-print("Tipus de depth:", ____(depth))               # TODO: aquí igual
+print("Tipus de temperature:", ____(temperature))   #  quina funció informa del tipus?
+print("Tipus de depth:", ____(depth))               #  aquí igual
 ```
 
 > 📝 `temperature` i `depth` són tots dos números, però Python n'informa de dos tipus diferents. Quins són, i quina diferència hi ha?
@@ -353,12 +351,12 @@ d = 0
 c = (1448.96
      + 4.591 * t
      - 5.304e-2 * t**2
-     + 2.374e-4 * ____            # TODO: aquest terme necessita T al cub
+     + 2.374e-4 * ____            #  aquest terme necessita T al cub
      + 1.340 * (s - 35)
      + 1.630e-2 * d
      + 1.675e-7 * d**2
      - 1.025e-2 * t * (s - 35)
-     - 7.139e-13 * t * ____)      # TODO: aquest terme necessita D al cub
+     - 7.139e-13 * t * ____)      #  aquest terme necessita D al cub
 
 print("Mediterrània superficial:", round(c, 2), "m/s")
 ```
@@ -415,7 +413,7 @@ def sound_speed(t, s, d):
          + 1.675e-7 * d**2
          - 1.025e-2 * t * (s - 35)
          - 7.139e-13 * t * d**3)
-    return ____                    # TODO: què hauria de retornar la funció?
+    return ____                    #  què hauria de retornar la funció?
 ```
 
 Comprova que reprodueix la Tasca 2, en tres línies en comptes de trenta:
@@ -423,7 +421,7 @@ Comprova que reprodueix la Tasca 2, en tres línies en comptes de trenta:
 ```python
 print(round(sound_speed(24.1, 36.5, 0), 2))       # -> 1533.76
 print(round(sound_speed(13.5, 38.7, 400), 2))     # -> 1512.85
-print(round(sound_speed(____, ____, ____), 2))    # TODO: els valors de l'atlàntica profunda -> 1510.34
+print(round(sound_speed(____, ____, ____), 2))    #  els valors de l'atlàntica profunda -> 1510.34
 ```
 
 **Autocomprovació.** El valor que tothom fa servir per verificar una implementació de Mackenzie és T = 25 °C, S = 35 PSU, D = 1000 m:
@@ -459,17 +457,17 @@ salinities = []
 with open("ctd_profile.csv", "r") as f:
     header = f.readline()               # llegeix la línia de capçalera i deixa-la de banda
     for line in f:                      # ara el bucle comença a la primera línia de dades
-        parts = line.strip().split(____)      # TODO: quin caràcter separa les columnes?
+        parts = line.strip().split(____)      #  quin caràcter separa les columnes?
         depths.append(float(parts[0]))
-        temperatures.append(float(parts[____]))    # TODO: quina columna és la temperatura?
-        salinities.append(float(parts[____]))      # TODO: quina columna és la salinitat?
+        temperatures.append(float(parts[____]))    #  quina columna és la temperatura?
+        salinities.append(float(parts[____]))      #  quina columna és la salinitat?
 ```
 
 Comprova què has carregat:
 
 ```python
 print("La capçalera era:", header.strip())
-print("Nombre de registres:", ____(depths))       # TODO: com se saben els elements d'una llista?
+print("Nombre de registres:", ____(depths))       #  com se saben els elements d'una llista?
 print("Menys profund:", depths[0], "m ->", temperatures[0], "C,", salinities[0], "PSU")
 print("Més profund:", depths[____], "m ->", temperatures[____], "C,", salinities[____], "PSU")
 ```
@@ -511,7 +509,7 @@ print("A la superfície:", round(speeds[0], 2), "m/s")
 Ara afegeix-hi la validació. Recorda que Mackenzie només és vàlida per a 2 ≤ T ≤ 30 °C. Insereix això **dins del bucle**, just abans de l'`append`:
 
 ```python
-    if t < ____ or t > ____:            # TODO: l'interval vàlid de temperatura
+    if t < ____ or t > ____:            #  l'interval vàlid de temperatura
         print("AVÍS: la temperatura", t, "C a", d, "m és fora de l'interval vàlid (2-30 C)")
 ```
 
@@ -538,10 +536,10 @@ A la superfície: 1533.78 m/s
 Calcular una cosa no serveix de res si desapareix quan acaba l'script. Escriu els resultats:
 
 ```python
-with open("sound_speed_profile.csv", "____") as f:      # TODO: "r" per llegir, "w" per escriure?
+with open("sound_speed_profile.csv", "____") as f:      #  "r" per llegir, "w" per escriure?
     f.write("depth_m,sound_speed_ms\n")
     for i in range(len(depths)):
-        f.write(str(depths[i]) + "," + str(round(speeds[i], 2)) + "____")   # TODO: acaba la línia
+        f.write(str(depths[i]) + "," + str(round(speeds[i], 2)) + "____")   #  acaba la línia
 ```
 
 Obre `sound_speed_profile.csv` al teu IDE. Hauria de començar així:
