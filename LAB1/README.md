@@ -498,9 +498,6 @@ Calculades 25 velocitats del so
 A la superfície: 1533.78 m/s
 ```
 
-> 📝 Dos registres han activat l'avís. Són errors de mesura, o és aigua real? Busca la temperatura típica de l'Aigua de Fons Antàrtica abans de respondre.
-
-> 📝 Hem imprès un avís però igualment hem calculat un valor per a aquestes dues profunditats. Va ser la decisió correcta? Què més hauríem pogut fer, i què perdríem en cada cas?
 
 ---
 
