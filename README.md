@@ -33,7 +33,7 @@ Al llarg del curs treballaràs amb:
 | Pràctica | Tema                                                                     |
 |---|--------------------------------------------------------------------------|
 | [LAB1](LAB1/) | Fonaments de Python 3 — tipus, control de flux, funcions, fitxers        |
-| LAB2 | Fitxers CSV, pandas i matplotlib                                         |
+| [LAB2](LAB2/) | Fitxers CSV, pandas i matplotlib                                         |
 | LAB3 | Automatització i APIs amb bots de Telegram                               |
 | LAB4 | Treballar amb dades de Copernicus — descàrrega automàtica, mapes         |
 
