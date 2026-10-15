@@ -269,15 +269,8 @@ time
 2009-05-29 19:00:00   NaN  37.6341      NaN        1
 ```
 
-Finalment, imprimeix quantes files tens, el primer i l'últim dia, i els tipus de les columnes.
+Finalment, amb `print(df)` et mostrarà un resum de taula, incloent quantes files tens,  les primeres i les últimes dades. 
 
-**Sortida esperada:**
-
-```
-236085 files, de 2009-05-29 a 2026-10-01
-TEMP: float64 · PSAL: float64 · TEMP_QC: float64
-L'índex és de tipus: datetime64[ns]
-```
 
 > 📝 Quina fila concreta del fitxer feia que `TEMP` fos `object`? Per què `TEMP_QC` sí que era `float64` des del primer moment, si estava al mateix fitxer?
 
