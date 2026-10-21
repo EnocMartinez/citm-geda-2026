@@ -45,7 +45,7 @@ curt expressament: avui el lliurament és **el codi**, no la prosa.
 
 * Parlar amb una API REST (Telegram) amb la llibreria `requests`
 * Enviar peticions **POST** amb text i amb fitxers
-* Llegir una resposta en JSON i treure'n un valor d'una estructura imbricada
+* Llegir una resposta en JSON i treure'n un valor d'una estructura complexa
 * Mantenir una credencial fora del codi font
 * Escriure un programa que **no s'atura** — un bucle `while` que escolta i reacciona
 
@@ -53,8 +53,7 @@ curt expressament: avui el lliurament és **el codi**, no la prosa.
 
 Lliura a l'Atenea:
 
-* **`LAB3.py`** — l'script final, les quatre tasques en un únic fitxer, que es
-  pugui executar de dalt a baix.
+* Un fitxer `**zip**` que contingui el codi (`LAB3.py`) i les imatges que utilitza el vostre bot.
 * Un informe curt en PDF: una captura del teu xat de Telegram amb el bot
   funcionant, les respostes a les preguntes 📝, i una secció `Ús d'IA` dient
   quines eines d'IA has fet servir i per a què.
@@ -76,7 +75,7 @@ pip install requests rich
 ```
 
 `requests` parla amb l'API. La `rich` hi és per un sol motiu: avui miraràs
-diccionaris molt imbricats, i el `print()` pelat te'ls aboca en una única
+diccionaris, i el `print()` pelat te'ls aboca en una única
 línia illegible. `rich.print()` imprimeix el mateix diccionari indentat i
 acolorit, i així en veus la forma:
 
@@ -140,8 +139,8 @@ pengen: `{URL}/sendMessage`, `{URL}/sendPhoto`, `{URL}/getUpdates`.
 
 > ⚠️ **El `python3` no és un mag.** `open("secrets.json")` busca aquest fitxer
 > a la carpeta des d'on executes l'script, i en cap altre lloc. No et rastreja
-> el disc per trobar-lo. Si el `secrets.json` encara és a la carpeta de
-> baixades i el teu script és a `GeDa/LAB3`, obtindràs
+> el disc per trobar-lo. Si el `secrets.json` no està a la mateixa carpeta que 
+> l'script obtindràs:
 >
 > ```
 > FileNotFoundError: [Errno 2] No such file or directory: 'secrets.json'
@@ -152,13 +151,6 @@ pengen: `{URL}/sendMessage`, `{URL}/sendPhoto`, `{URL}/getUpdates`.
 > `turtle.jpg`. **Mantén l'script i tots els fitxers que obre en una mateixa
 > carpeta, i executa l'script des d'aquella carpeta.**
 
-> 📝 Acabes de posar un secret en un fitxer a part en comptes de dins del
-> codi, i l'informe tampoc no l'ha de contenir. Explica què aniria malament si
-> pugessis el `secrets.json` a un repositori públic de GitHub, i digues què
-> hauries de fer a continuació.
-
-> **No tens compte de Telegram?** Demana-ho — hi ha un bot compartit de classe
-> perquè puguis fer tota la pràctica sense haver-te'n de crear un.
 
 ---
 
@@ -416,7 +408,7 @@ Avui has après a:
 - enviar una petició **POST** a una API REST real, amb paràmetres i amb un fitxer
 - llegir un **codi d'estat** i fer-lo servir per decidir si alguna cosa ha anat bé
 - mantenir una **credencial fora del codi font**, i fora del control de versions
-- navegar per una **estructura JSON imbricada** que no has dissenyat tu, fins a
+- navegar per una **estructura JSON** que no has dissenyat tu, fins a
   arribar a un valor concret
 - escriure un programa que **no s'atura**, que recorda què ja ha processat, i
   que es ramifica segons el que digui l'usuari
