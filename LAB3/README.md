@@ -53,7 +53,7 @@ curt expressament: avui el lliurament és **el codi**, no la prosa.
 
 Lliura a l'Atenea:
 
-* Un fitxer `**zip**` que contingui el codi (`LAB3.py`) i les imatges que utilitza el vostre bot.
+* Un fitxer **`zip`** que contingui el codi (`LAB3.py`) i les imatges que utilitza el vostre bot.
 * Un informe curt en PDF: una captura del teu xat de Telegram amb el bot
   funcionant, les respostes a les preguntes 📝, i una secció `Ús d'IA` dient
   quines eines d'IA has fet servir i per a què.
