@@ -34,8 +34,8 @@ Al llarg del curs treballaràs amb:
 |---|--------------------------------------------------------------------------|
 | [LAB1](LAB1/) | Fonaments de Python 3 — tipus, control de flux, funcions, fitxers        |
 | [LAB2](LAB2/) | Fitxers CSV, pandas i matplotlib                                         |
-| LAB3 | Automatització i APIs amb bots de Telegram                               |
-| LAB4 | Treballar amb dades de Copernicus — descàrrega automàtica, mapes         |
+| [LAB3](LAB3/) | Automatització i APIs amb bots de Telegram                               |
+| [LAB4](LAB4/) | Treballar amb dades de Copernicus — descàrrega automàtica, mapes         |
 
 Obre la carpeta d'una pràctica, llegeix-ne el `README.md` i fes les tasques en ordre. Els exercicis estan pensats per resoldre's en Python 3 — no cal experiència prèvia en programació.
 
